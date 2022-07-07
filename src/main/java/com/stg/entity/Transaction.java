@@ -50,6 +50,14 @@ public class Transaction {
 		this.localDateTime = localDateTime;
 		this.account = account;
 	}
+	
+	public int getAccNo() {
+		return account.getAccNo();
+	}
+	
+	public int getBranchId() {
+		return account.getBranchId();
+	}
 
 	public long getTransId() {
 		return transId;

@@ -32,7 +32,7 @@ public class Branch {
 	private String branchCity;
 
 	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "branch")
+	@OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY, mappedBy = "branch")
 	private Set<Account> accounts;
 	
 //	@JsonManagedReference

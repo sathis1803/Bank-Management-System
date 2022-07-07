@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stg.entity.Transaction;
-import com.stg.entity.TransactionDao;
 import com.stg.service.TransactionService;
 
 @RestController
@@ -30,29 +29,12 @@ public class TransactionController {
 	@GetMapping(value = "getCount")
 	public long countAllTransaction(){		
 		return transactionService.getCountAllTransaction();
-	}
-	
-	@GetMapping(value = "getall")
-	public List<Transaction> allTransactionByAccNo(){	
-		
-		return transactionService.allTransaction();
-	}
+	}	
 	
 	@GetMapping(value = "getallwithaccno")
-	public List<TransactionDao> allTransactionWithAccNo(){
-		List<Transaction> list =transactionService.allTransaction();
-		List<TransactionDao> dao = new ArrayList<>();
-		for (Transaction trans : list) {
-			TransactionDao transactionDao = new TransactionDao();
-			transactionDao.setAccNo(trans.getAccount().getAccNo());
-			transactionDao.setLocalDateTime(trans.getLocalDateTime());
-			transactionDao.setTransAmount(trans.getTransAmount());
-			transactionDao.setTransId(trans.getTransId());
-			transactionDao.setTransType(trans.isTransType());
-			
-			dao.add(transactionDao);
-		}
-		return dao;
+	public List<Transaction> allTransactionWithAccNo(){
+		
+		return transactionService.allTransaction();
 	}
 	
 }

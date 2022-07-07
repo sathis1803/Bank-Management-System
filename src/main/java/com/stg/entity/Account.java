@@ -54,8 +54,8 @@ public class Account {
 	@Column(name = "accstatus",nullable = false)	
 	private boolean accStatus;
 	
-	@ManyToOne
-	@JoinColumn(name = "branch_id",referencedColumnName = "branch_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "branch_id", nullable = false)
 	@JsonBackReference
 	private Branch branch;
 	
@@ -122,7 +122,10 @@ public class Account {
 		this.user = user;
 		this.transactions = transactions;
 	}
-
+	
+	public int getBranchId() {
+		return branch.getBranchId();
+	}
 
 	public int getAccNo() {
 		return accNo;
@@ -187,6 +190,8 @@ public class Account {
 	public void setAccStatus(boolean accStatus) {
 		this.accStatus = accStatus;
 	}
+	
+	
 
 	public Branch getBranch() {
 		return branch;
